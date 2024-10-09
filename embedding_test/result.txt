@@ -1,0 +1,56 @@
+(audio_venv) D:\Python test\embedding_test>"D:/Python test/embedding_test/new_env/Scripts/python.exe" "d:/Python test/embedding_test/embedding_test.py"
+Enter your search query: 백사장과 강백호의 관계는?
+D:\Python test\embedding_test\new_env\Lib\site-packages\transformers\tokenization_utils_base.py:1601: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be depracted in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+
+Testing OpenAI
+Vector store creation time: 2.05 seconds
+Search time: 0.58 seconds
+Top 3 results:
+- 강백호: 강사장님, 어디세요?
+강사장: 어~ 나 지금 중앙에 있어. 넌?
+강백호: 지금 백사장이랑 있는데 사탕 거래 될까요?
+강사장: 당연하지. 오늘 거래 하기로 했잖아. 지금 어... (Score: 0.2954)
+- 강백호: 소연아 미안한데 우리 마지막으로 한번만 만나자. 만나서 이야기해.
+이소연: 내가 그렇게 사탕 끊으라고 했는데 또 먹다니! 말이 돼?
+강백호: 미안해, 잘못했어. 입이 열개... (Score: 0.3914)
+- iPhone 12 iOS 14.4 ABC123 123456789012345... (Score: 0.6521)
+
+Testing HuggingFace
+Vector store creation time: 1.15 seconds
+Search time: 0.02 seconds
+Top 3 results:
+- 강백호: 강사장님, 어디세요?
+강사장: 어~ 나 지금 중앙에 있어. 넌?
+강백호: 지금 백사장이랑 있는데 사탕 거래 될까요?
+강사장: 당연하지. 오늘 거래 하기로 했잖아. 지금 어... (Score: 0.8485)
+- 강백호: 소연아 미안한데 우리 마지막으로 한번만 만나자. 만나서 이야기해.
+이소연: 내가 그렇게 사탕 끊으라고 했는데 또 먹다니! 말이 돼?
+강백호: 미안해, 잘못했어. 입이 열개... (Score: 1.0085)
+- iPhone 12 iOS 14.4 ABC123 123456789012345... (Score: 2.0684)
+
+Testing Cohere
+Vector store creation time: 0.42 seconds
+Search time: 0.23 seconds
+Top 3 results:
+- 강백호: 소연아 미안한데 우리 마지막으로 한번만 만나자. 만나서 이야기해.
+이소연: 내가 그렇게 사탕 끊으라고 했는데 또 먹다니! 말이 돼?
+강백호: 미안해, 잘못했어. 입이 열개... (Score: 42.8546)
+- 강백호: 강사장님, 어디세요?
+강사장: 어~ 나 지금 중앙에 있어. 넌?
+강백호: 지금 백사장이랑 있는데 사탕 거래 될까요?
+강사장: 당연하지. 오늘 거래 하기로 했잖아. 지금 어... (Score: 51.2096)
+- iPhone 12 iOS 14.4 ABC123 123456789012345... (Score: 60.8919)
+
+Testing Spacy
+Vector store creation time: 0.08 seconds
+Search time: 0.01 seconds
+Top 3 results:
+- 강백호: 강사장님, 어디세요?
+강사장: 어~ 나 지금 중앙에 있어. 넌?
+강백호: 지금 백사장이랑 있는데 사탕 거래 될까요?
+강사장: 당연하지. 오늘 거래 하기로 했잖아. 지금 어... (Score: 17.1127)
+- 강백호: 소연아 미안한데 우리 마지막으로 한번만 만나자. 만나서 이야기해.
+이소연: 내가 그렇게 사탕 끊으라고 했는데 또 먹다니! 말이 돼?
+강백호: 미안해, 잘못했어. 입이 열개... (Score: 18.3683)
+- iPhone 12 iOS 14.4 ABC123 123456789012345... (Score: 52.9089)

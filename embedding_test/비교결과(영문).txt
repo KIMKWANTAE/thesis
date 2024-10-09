@@ -1,0 +1,38 @@
+The script you ran tested four different embedding models (OpenAI, HuggingFace, Cohere, and Spacy) and returned the top 3 results for each model based on your query, "What is the relationship between Baek Sa-jang and Kang Baek-ho?" Here’s a breakdown of the results:
+
+1. OpenAI Embeddings:
+Creation Time: 2.05 seconds
+Search Time: 0.58 seconds
+Top 3 Results:
+Kang Baek-ho talking with an instructor about a deal involving candy, mentioning Baek Sa-jang. (Score: 0.2954)
+A conversation between Kang Baek-ho and Lee So-yeon about eating candy, with Baekho apologizing. (Score: 0.3914)
+A result seemingly unrelated to the context ("iPhone 12 iOS 14.4..."). (Score: 0.6521)
+2. HuggingFace Embeddings:
+Creation Time: 1.15 seconds
+Search Time: 0.02 seconds
+Top 3 Results:
+Similar to OpenAI, this result also contains a conversation about trading candy, referencing Baek Sa-jang. (Score: 0.8485)
+Another conversation between Kang Baek-ho and Lee So-yeon about candy. (Score: 1.0085)
+Unrelated information ("iPhone 12 iOS 14.4..."). (Score: 2.0684)
+3. Cohere Embeddings:
+Creation Time: 0.42 seconds
+Search Time: 0.23 seconds
+Top 3 Results:
+A conversation about meeting with Lee So-yeon and eating candy, involving Kang Baek-ho. (Score: 42.8546)
+The candy trade conversation referencing Baek Sa-jang. (Score: 51.2096)
+Unrelated information ("iPhone 12 iOS 14.4..."). (Score: 60.8919)
+4. Spacy Embeddings:
+Creation Time: 0.08 seconds
+Search Time: 0.01 seconds
+Top 3 Results:
+Similar to the previous embeddings, a candy-related conversation between Baek Sa-jang and Kang Baek-ho. (Score: 17.1127)
+A conversation about Kang Baek-ho apologizing to Lee So-yeon. (Score: 18.3683)
+Unrelated information ("iPhone 12 iOS 14.4..."). (Score: 52.9089)
+Analysis:
+Relevance of Results: The embedding models, particularly OpenAI, HuggingFace, and Spacy, performed reasonably well in identifying some contextually relevant dialogues involving Baek Sa-jang and Kang Baek-ho. However, they also surfaced unrelated content (i.e., "iPhone 12" information).
+
+Score Differences: HuggingFace embeddings showed better matching scores in terms of magnitude, while OpenAI and Spacy had lower scores for the same content. Cohere embeddings had significantly higher scores, but that may be due to differences in score scaling across the models.
+
+Execution Time: OpenAI embeddings took longer to create the vector store compared to HuggingFace and Spacy, while Spacy embeddings were the fastest in both vector store creation and search.
+
+In conclusion, all models retrieved relevant dialogues but mixed them with less meaningful results. HuggingFace and OpenAI seem to balance speed and relevance, while Spacy is significantly faster but with some outlier results. Cohere’s scoring might need interpretation adjustments given the high values.
