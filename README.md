@@ -1,10 +1,9 @@
-# thesis
-hello
+# Welcome to the GitHub Space
 
-These files are example codes used in graduate school thesis.
+Hello, this GitHub space contains example files used in the graduate school's master's thesis. There are many shortcomings, so please be lenient. 
 
-If there is anything missing, please contact us by email at any time.
+If there are any mistakes or questions, please feel free to contact us by email.
 
-Kwantae Kim : gooy522@gmail.com
+**Kwantae Kim**: gooy522@gmail.com
 
-Always be happy :)
+Always be full of happiness~
