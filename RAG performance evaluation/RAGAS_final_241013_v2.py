@@ -19,15 +19,12 @@ from ragas.metrics import (
     context_recall
 )
 from datasets import Dataset
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from rouge import Rouge
-from transformers import AutoTokenizer, AutoModel
-import torch
+from sentence_transformers import SentenceTransformer
 import re
 from fuzzywuzzy import fuzz
-from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
 
 # 환경 변수에서 OpenAI API 키 로드
 load_dotenv()
@@ -87,25 +84,6 @@ def improved_rouge(reference, candidate):
     rouge = Rouge()
     scores = rouge.get_scores(preprocess_text(candidate), preprocess_text(reference))
     return scores[0]['rouge-l']['f']
-
-# 코사인 유사도 계산 함수
-def improved_cosine_similarity(text1, text2):
-    vectorizer = TfidfVectorizer().fit([text1, text2])
-    tfidf_matrix = vectorizer.transform([text1, text2])
-    return cosine_similarity(tfidf_matrix[0], tfidf_matrix[1])[0][0]
-
-# BERT를 이용한 유사도 계산 함수
-def bert_similarity(text1, text2, model_name='bert-base-uncased'):
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModel.from_pretrained(model_name)
-    
-    inputs = tokenizer([text1, text2], return_tensors='pt', padding=True, truncation=True)
-    with torch.no_grad():
-        outputs = model(**inputs)
-    
-    embeddings = outputs.last_hidden_state.mean(dim=1)
-    similarity = cosine_similarity(embeddings[0].unsqueeze(0), embeddings[1].unsqueeze(0))
-    return similarity.item()
 
 # Sentence Transformer 모델 로드
 model = SentenceTransformer('paraphrase-MiniLM-L6-v2')
@@ -317,3 +295,20 @@ for i, result in enumerate(results, 1):
     print(f"RAG 답변에만 있는 단어: {', '.join(answer_words - gt_words)}")
 
 print("\n평가 완료")
+
+# 평가 메트릭 설명
+print("\n평가 메트릭 설명:")
+print("RAGAS 메트릭:")
+print("1. Context Precision: 생성된 답변에 사용된 컨텍스트의 정확도")
+print("2. Faithfulness: 생성된 답변이 제공된 컨텍스트에 충실한 정도")
+print("3. Answer Relevancy: 생성된 답변이 질문에 관련된 정도")
+print("4. Context Recall: 관련 있는 모든 정보가 검색된 컨텍스트에 포함된 정도")
+
+print("\n추가 메트릭:")
+print("5. Precision@k: 검색된 상위 k개 문서 중 관련 있는 문서의 비율")
+print("6. Recall@k: 관련 있는 모든 문서 중 검색된 상위 k개 문서에 포함된 비율")
+print("7. BLEU: 생성된 답변과 정답 간의 n-gram 유사도")
+print("8. ROUGE: 생성된 답변과 정답 간의 단어 중복률")
+print("9. Similarity: 생성된 답변과 정답 간의 의미적 유사도 (Sentence Transformer 사용)")
+
+print("\n주의: 이 평가는 제한된 데이터셋과 간소화된 관련성 판단 기준을 사용하였으므로, 실제 성능은 다를 수 있습니다.")
